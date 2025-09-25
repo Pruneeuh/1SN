@@ -1,0 +1,123 @@
+% Validation de pr02
+% 2024-11-21 15:50:01.843625
+
+
+################################################################################
+# Modification des fichiers fournis
+################################################################################
+
+
+================================================================================
+## Fichiers qui NE devaient PAS être modifiés
+================================================================================
+
+* Fichier alea.adb non modifié... ok
+* Fichier alea.ads non modifié... ok
+* Fichier exemple_alea.adb non modifié... ok
+* Fichier exemple_unbounded_string.adb non modifié... ok
+* Fichier sda_exceptions.ads non modifié... ok
+* Fichier test_lca.adb non modifié... ok
+
+================================================================================
+## Fichiers qui DEVAIENT être modifiés
+================================================================================
+
+* Fichier lca_sujet.adb modifié... ok
+* Fichier lca.ads modifié... ok
+* Fichier lca.adb modifié... ok
+
+
+################################################################################
+# Nettoyer
+################################################################################
+
+* Running gnatclean... ok
+
+
+################################################################################
+# Exercice 1
+################################################################################
+
+
+================================================================================
+## Modifications de lca.ads
+================================================================================
+
+* Comparaison de lca.ads et fournis/lca.ads... différents
+
+   |     type T_Cellule;                                                                       <
+   |     type T_LCA is access T_Cellule;                                                       |          -- TODO : a completer
+   |     type T_Cellule is                                                                     <
+   |         record                                                                            <
+   |             Cle : T_Cle;                                                                  <
+   |             Valeur : T_Valeur;                                                            <
+   |             Suivant : T_LCA;                                                              <
+   |         end record;                                                                       <
+
+
+================================================================================
+## Exécution de lca_sujet.adb
+================================================================================
+
+* Compilation de lca_sujet.adb... ok
+
+  | lca_sujet.adb:27:21: warning: wrong length for array of type "T_Cle" defined at lca.ads:5, instance at line 7
+  | lca_sujet.adb:27:21: warning: "Constraint_Error" will be raised at run time
+  | lca_sujet.adb:28:21: warning: wrong length for array of type "T_Cle" defined at lca.ads:5, instance at line 7
+  | lca_sujet.adb:28:21: warning: "Constraint_Error" will be raised at run time
+
+* ./lca_sujet... ERREUR
+
+  ! raised CONSTRAINT_ERROR : lca_sujet.adb:27 length check failed
+
+* Exécution avec valgrind... NON LANCÉE (car erreur sans valgrind)... 
+
+================================================================================
+## Exécution de test_lca.adb
+================================================================================
+
+* Compilation de test_lca.adb... ok
+* ./test_lca... ok
+* valgrind ./test_lca... ERREUR
+
+  ! ==2014299== Memcheck, a memory error detector
+  ! ==2014299== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+  ! ==2014299== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+  ! ==2014299== Command: ./test_lca
+  ! ==2014299== 
+  ! ==2014299== 
+  ! ==2014299== HEAP SUMMARY:
+  ! ==2014299==     in use at exit: 1,312 bytes in 28 blocks
+  ! ==2014299==   total heap usage: 169 allocs, 141 frees, 12,672 bytes allocated
+  ! ==2014299== 
+  ! ==2014299== 1,312 (48 direct, 1,264 indirect) bytes in 1 blocks are definitely lost in loss record 11 of 11
+  ! ==2014299==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+  ! ==2014299==    by 0x4AEC03E: __gnat_malloc (in /usr/lib/x86_64-linux-gnu/libgnat-10.so)
+  ! ==2014299==    by 0x4B1955C: system__pool_global__allocate (in /usr/lib/x86_64-linux-gnu/libgnat-10.so)
+  ! ==2014299==    by 0x4B291E6: system__storage_pools__subpools__allocate_any_controlled (in /usr/lib/x86_64-linux-gnu/libgnat-10.so)
+  ! ==2014299==    by 0x10DEA6: test_lca__lca_string_integer__enregistrer__P335b.7 (lca.adb:78)
+  ! ==2014299==    by 0x10DD69: test_lca__lca_string_integer__enregistrer.6 (lca.adb:72)
+  ! ==2014299==    by 0x10F124: test_lca__construire_exemple_sujet.3 (test_lca.adb:78)
+  ! ==2014299==    by 0x10F502: test_lca__tester_supprimer_inverse.25 (test_lca.adb:117)
+  ! ==2014299==    by 0x10D33E: _ada_test_lca (test_lca.adb:379)
+  ! ==2014299==    by 0x10CBEC: main (b~test_lca.adb:288)
+  ! ==2014299== 
+  ! ==2014299== LEAK SUMMARY:
+  ! ==2014299==    definitely lost: 48 bytes in 1 blocks
+  ! ==2014299==    indirectly lost: 1,264 bytes in 27 blocks
+  ! ==2014299==      possibly lost: 0 bytes in 0 blocks
+  ! ==2014299==    still reachable: 0 bytes in 0 blocks
+  ! ==2014299==         suppressed: 0 bytes in 0 blocks
+  ! ==2014299== 
+  ! ==2014299== For lists of detected and suppressed errors, rerun with: -s
+  ! ==2014299== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+
+
+
+################################################################################
+# Nettoyer
+################################################################################
+
+* Running gnatclean... ok
+
+<!-- vi: set ts=8: -->
