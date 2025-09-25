@@ -1,0 +1,5 @@
+
+* Voir le retour général sur Moodle, rubrique TD & TP & Mini-projets.
+* Voir le retour automatique, fichier pr02/retour1-automatique.txt sur Gitlab.
+
+* Pour_Chaque : Il n'est pas demandé d'afficher un message.

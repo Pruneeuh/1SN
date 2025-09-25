@@ -1,0 +1,90 @@
+% Compte-rendu minimal du mini-projet SDA : LCA et TH
+% Auteur : MAMALET Prune
+% Groupe de TP : H
+
+
+**Consigne :** Vous devez écrire vos réponse à la place des ... en laissant
+une ligne vide avant et deux après votre réponse.
+
+**Remarque :** Ce document utilise le langage Markdown. On peut en engendrer
+une version PDF en faisant par exemple :
+
+~~~
+pandoc --toc -N -o LISEZ-MOI.pdf LISEZ-MOI.txt
+~~~
+
+
+# Exercice 1
+
+## Question 1.4
+
+**Indiquer les inconvénients/avantages d'une implantation par listes chaînées
+d'une SDA.**
+
+Avantages : pas de limite sur le nombre de couples Clé-Valeur; alloue uniquement la mémoire nécessaire et pas plus
+Inconvenients : recherche d'une clé plus long puisqu'on est obligé de parcouir toute la lsite élement par élément; nécessité de stocker/gérer l'adresse vers l'élement suivant; rique de fuite de mémoire
+
+
+
+# Évaluation expérimentale.
+
+## Performance comparée de LCA et TH
+
+Indiquer ici les résultats obtenus.
+
+Pour Borne = 1000, Taille = 100000
+Pour un TH : 
+    Borne  : 1000
+    Taille : 100000
+    Min : 72
+    Max : 140
+
+    real	0m0,011s
+    user	0m0,010s
+    sys	0m0,000s
+
+Pour un LCA : 
+    Borne  : 1000
+    Taille : 100000
+    Min : 69
+    Max : 133
+
+    real	0m0,504s
+    user	0m0,503s
+    sys	0m0,000s
+
+Le type TH est donc plus efficace (ce qui est cohérent vu qu'il n'a pas besoin de parcourir toutes les clé pour récupérer une valeur. 
+
+
+
+## Qualité du générateur aléatoire
+
+Indiquer les conclusions quant à la qualité du générateur aléatoire.
+
+Quand on génère 100000 valeurs aléatoires la différence entre le min et le max et d'envion 60 ce qui montre que le générateur de hasard n'est pas trop mauvais, même s'il n'est pas parfait vu que les deux valeurs sont quand même éloignées.
+
+
+# Principales difficultés rencontrées
+
+Indiquer ici les principales difficultés rencontrées lors de la réalisation de
+ce projet et comment elles ont été surmontées ou contournéeS.
+
+J'ai eu des difficultés à bien comprendre comment utiliser les paramètres génériques et les expetions. 
+
+
+
+# Informations complémentaires
+
+Indiquer ici les informations qui pourraient aider à la compréhension du
+travail réalisé.
+
+Cette partie peut être vide.
+
+...
+
+
+
+# Bilan personnel
+
+Quel bilan personnel tirez-vous de ce mini-projet ?
+ Une meilleure comprehesion des modules et générécité, et une meilleure idée du temps que représente un projet à faire. 

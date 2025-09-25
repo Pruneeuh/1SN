@@ -1,0 +1,76 @@
+Vérification de la syntaxe pour complexe.h :
+gcc -std=c99 -c -Wall -Wextra -pedantic -Werror -fsyntax-only -x c complexe.h
+Vérification de la syntaxe pour complexe.c :
+gcc -std=c99 -c -Wall -Wextra -pedantic -Werror -fsyntax-only -x c complexe.c
+Vérification de la syntaxe pour mandelbrot.c :
+gcc -std=c99 -c -Wall -Wextra -pedantic -Werror -fsyntax-only -x c mandelbrot.c
+
+[le header complexe.h est correctement gardé]
+==code
+
+==endcode
+
+[Définition de complexe_t]
+==code
+complexe_t c; (void) c;
+==endcode
+
+[Définition de reelle et imaginaire]
+==code
+complexe_t c; double x = reelle(c); x = imaginaire(c); (void) x;
+==endcode
+
+[Définition de init]
+==code
+complexe_t c; double x = 1.0; init(&c, x, x);
+==endcode
+
+[Définition de set_reelle et set_imaginaire]
+==code
+complexe_t c; double x = 0.0; set_reelle(&c, x); set_imaginaire(&c, x);
+==endcode
+
+[Définition de copie]
+==code
+complexe_t c; copie(&c, c);
+==endcode
+
+[Définition de ajouter]
+==code
+complexe_t c; ajouter(&c, c, c);
+==endcode
+
+[Définition de soustraire]
+==code
+complexe_t c; soustraire(&c, c, c);
+==endcode
+
+[Définition de multiplier]
+==code
+complexe_t c; multiplier(&c, c, c);
+==endcode
+
+[Définition de echelle]
+==code
+complexe_t c; double x; echelle(&c, c, x);
+==endcode
+
+[Définition de puissance]
+==code
+complexe_t c; int n; puissance(&c, c, n);
+==endcode
+
+[Définition de module_carre]
+==code
+complexe_t c; double x = module_carre(c); (void) x;
+==endcode
+
+[Définition de module]
+==code
+complexe_t c; double x = module(c); (void) x;
+==endcode
+
+[Définition de argument]
+==code
+complexe_t c; double x = argument(c); (void) x;
+==endcode

@@ -1,0 +1,6 @@
+Section LogiquePredicats.
+Variable A B : Type.
+
+Theorem Thm_8 : forall (P,Q : A -> Prop), 
+             (exists x1 : A, forall y1 : B, (P x1 y1))
+             -> forall y2 : B, exists x2 : A, (P x2 y2)

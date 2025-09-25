@@ -1,0 +1,5 @@
+exemple_dates_erreurs.adb:19:05: error: "Afficher_Deux_Positions" is undefined
+exemple_dates_erreurs.adb:30:05: error: invalid prefix in selected component "Une_Date"
+exemple_dates_erreurs.adb:31:05: error: invalid prefix in selected component "Une_Date"
+exemple_dates_erreurs.adb:36:05: error: left hand of assignment must not be limited type
+exemple_dates_erreurs.adb:41:19: error: there is no applicable operator "=" for private type "T_Date" defined at dates.ads:12

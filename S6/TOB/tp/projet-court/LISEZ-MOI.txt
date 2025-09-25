@@ -1,0 +1,65 @@
+--------------------------------------------------------------------------------
+Nom       : MAMALET
+Prénom    : Prune
+Groupe TP : H
+--------------------------------------------------------------------------------
+
+Consigne : Dans ce fichier, les « ... » indiquent les endroits à compléter.
+Il s'agit de remplacer les « ... » par votre texte.  Merci de laisser une
+ligne blanche avant.  Le texte déjà écrit doit être conservé !
+
+
+=====[ Temps passé ]============================================================
+
+Ces informations de temps sont demandées à titre indicatif et ne sont pas
+prises en compte dans la notation du projet.
+Il faut remplacer les ... par des nombres.
+
+
+* Temps passé sur la V1 : 17 heures 00 minutes
+* Temps passé sur la V2 : 11 heures 30 minutes
+
+Pour la V2 on ne tiendra pas compte du temps passé sur la V1.
+
+
+=====[ Questions ]==============================================================
+
+--------------------------------------------------------------------------------
+Pourquoi l'exception OperationInterditeException ne peut pas être définie
+comme vérifiée par le compilateur ?
+--------------------------------------------------------------------------------
+
+Cela permet de ne pas être obligé de lever cette exception dans un try-catch ou de déclarer que la méthode throws cette exception.
+
+--------------------------------------------------------------------------------
+Expliquer ce qu'il faut faire pour ajouter un nouveau niveau de jeu, par
+exemple la stratégie lente (C13).  Pour plus de précision, on numérotera
+les étapes à faire.
+--------------------------------------------------------------------------------
+
+1. Créer un nouvelle implémentations de stratégie nommée StrategieLente
+2. La fonction getNombreAllumettes(Jeu) retournera toujours 1 
+3. La fonction toString() retournera "Lente"
+4. Ajouter dans la classe Joueur dans la fonction recupererStrategie un nouveau cas si stratégie=lente qui retourne un nouvelle StrategieLente
+
+
+--------------------------------------------------------------------------------
+Expliquer ce qui permet, dans votre conception, de changer dynamiquement
+(en cours d'exécution du programme) la stratégie d'un joueur (C14).
+--------------------------------------------------------------------------------
+
+On peut utiliser la fonction changerStratégie(Strategie strategie) définie dans la classe Joueur.
+
+=====[ Explications ]===========================================================
+
+--------------------------------------------------------------------------------
+Donner ici les explications supplémentaires utiles à la compréhension du
+travail rendu.
+--------------------------------------------------------------------------------
+Je n'ai pas changé la gestion de mon arbitre confiant dans la classe arbitre.
+Cela respecte toujours le diagramme de classe donné, j'ai simplement ajouté une classe qui hérite de Arbitre en plus de celles existantes.
+
+Le test automatique m'indique une similitude entre le début de ma classe Arbitre et de ma classe Joueur.
+Cependant les seules ressemblaces sont dans le fait que je créer une classe avec deux attributs (qui n'ont pas les mêmes noms).
+J'ai aussi des similitudes aussi entre ma classe StategieHumaine et Proxy, les seules similitudes sont que j'ai un attributs privé puis un constructeur avec un paramètre.
+--------------------------------------------------------------------------------

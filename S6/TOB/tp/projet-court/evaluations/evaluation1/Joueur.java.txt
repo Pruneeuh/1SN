@@ -1,0 +1,6 @@
+allumettes/Joueur.java:48: error: cannot find symbol
+        return choixNbAllumette; 
+               ^
+  symbol:   variable choixNbAllumette
+  location: class Joueur
+1 error

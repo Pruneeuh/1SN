@@ -1,0 +1,801 @@
+SCORE: 9
+JUnit version 4.12
+.
+================================================================================
+> java allumettes.Jouer.main("-confiant", "x", "yyy@rapide")
+--------------------------------------------------------------------------------
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+*** Exception non récupérée : java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+--------------------------------------------------------------------------------
+
+
+E.
+================================================================================
+> java allumettes.Jouer.main("-confiant", "yyy@rapide", "xxx@rapide@naif")
+--------------------------------------------------------------------------------
+yyyAllumettes restantes : 13
+diff ordi
+yyy , combien d'allumettes ?yyy prend 3 allumettes.
+yyyprend13allumettes.test
+yyyAllumettes restantes : 10
+diff ordi
+yyy , combien d'allumettes ?yyy prend 3 allumettes.
+yyyprend10allumettes.test
+yyyAllumettes restantes : 7
+diff ordi
+yyy , combien d'allumettes ?yyy prend 3 allumettes.
+yyyprend7allumettes.test
+yyyAllumettes restantes : 4
+diff ordi
+yyy , combien d'allumettes ?yyy prend 3 allumettes.
+yyyprend4allumettes.test
+yyyAllumettes restantes : 1
+diff ordi
+yyy , combien d'allumettes ?yyy prend 1 allumettes.
+yyyprend1allumette.test
+allumettes.Joueur@1212c6fperd !
+allumettes.Joueur@1212c6f gagne !
+--------------------------------------------------------------------------------
+
+
+.
+================================================================================
+> java allumettes.Jouer.main("x", "yyy@rapide")
+--------------------------------------------------------------------------------
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+*** Exception non récupérée : java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+--------------------------------------------------------------------------------
+
+
+E.
+================================================================================
+> java allumettes.Jouer.main("-confiant", "yyy@rapide", "xxx@xyz")
+--------------------------------------------------------------------------------
+strat mal def
+Type de stratégie mal définie
+
+Usage :
+	java allumettes.Jouer joueur1 joueur2
+		joueur est de la forme nom@stratégie
+		strategie = naif | rapide | expert | humain | tricheur
+
+	Exemple :
+		java allumettes.Jouer Xavier@humain Ordinateur@naif
+
+--------------------------------------------------------------------------------
+
+
+.
+================================================================================
+> java allumettes.Jouer.main("yyy@rapide", "xxx@ville@naif")
+--------------------------------------------------------------------------------
+strat mal def
+Type de stratégie mal définie
+
+Usage :
+	java allumettes.Jouer joueur1 joueur2
+		joueur est de la forme nom@stratégie
+		strategie = naif | rapide | expert | humain | tricheur
+
+	Exemple :
+		java allumettes.Jouer Xavier@humain Ordinateur@naif
+
+--------------------------------------------------------------------------------
+
+
+.
+================================================================================
+> java allumettes.Jouer.main("@humain", "ordi@rapide")
+--------------------------------------------------------------------------------
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test
+normal
+Allumettes restantes : 13test

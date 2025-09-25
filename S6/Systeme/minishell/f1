@@ -1,0 +1,14 @@
+a.out
+copier.c
+erreur
+f1
+Makefile
+minishell
+minishell.c
+minishell.o
+readcmd.c
+readcmd.h
+readcmd.o
+test_readcmd.c
+tube1
+tubes

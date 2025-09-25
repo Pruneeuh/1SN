@@ -1,0 +1,14 @@
+* Le manuel utilisateur n'est pas un manuel utilisateur : il doit expliquer
+  comment l'utilisateur utilise l'application. Il ne doit pas parler de
+  classes, attributs, etc.
+* Il faut indiquer les « user stories » qui sont traitées dans l'itération 1.
+* Il faut expliquer le diagramme de classe (en utilisant le vocabulaire métier).
+* Il serait utile de faire des paquetages, en particulier pour bien sépérer la
+  partie métier et la partie interface utilisateur.
+* Que signifie 0 pour disponibilite(livre) ?  ==> Définir un type énuméré ou
+  utiliser une constante nommée.
+* Catalgue : on doit pouvoir faire mieux que plusieurs boucles pour chercher
+  un livre...
+* Emprunt et autres classes : pret derait s'appeler preter...
+* Est-ce logique que la quantité soit dans Livre ?
+* Utilisateur : listeEmprunts -> emprunts

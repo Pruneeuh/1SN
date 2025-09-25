@@ -1,0 +1,105 @@
+File allumettes/StrategieNaif.java: 78 tokens, 23 lines
+File allumettes/StrategieRapide.java: 57 tokens, 20 lines
+File allumettes/Arbitre.java: 193 tokens, 55 lines
+File allumettes/StrategieTricheur.java: 92 tokens, 30 lines
+File allumettes/Jouer.java: 574 tokens, 183 lines
+File allumettes/CoupInvalideException.java: 68 tokens, 39 lines
+File allumettes/ArbitreConfiant.java: 486 tokens, 103 lines (not NL-terminated)
+File allumettes/StrategieHumain.java: 52 tokens, 17 lines
+File allumettes/Jeu.java: 27 tokens, 22 lines
+File allumettes/ConfigurationException.java: 21 tokens, 15 lines
+File allumettes/StrategieExpert.java: 66 tokens, 24 lines
+File allumettes/Joueur.java: 72 tokens, 28 lines
+File allumettes/Strategie.java: 19 tokens, 8 lines
+File allumettes/JeuClasse.java: 94 tokens, 43 lines
+Total input: 14 files (14 new, 0 old), 1899 tokens
+
+allumettes/ArbitreConfiant.java: line 53-67 [67]
+allumettes/ArbitreConfiant.java: line 69-84
+<                 }
+<                 else {
+<                     if (prise > nbAllumette){
+<                         throw new CoupInvalideException(prise," (>" + nbAllumette + ")");
+<                     }
+<                     else if (prise > 3){
+<                         throw new CoupInvalideException(prise, " (>3)");
+<                     }
+<                     else if (prise < 0){
+<                         throw new CoupInvalideException(prise, " (<0)");
+<                     }
+<                     else {
+<                         jeu.retirer(prise);
+<                     }
+<                 }
+---
+>             }
+>             else {
+>                 if (prise > nbAllumette){
+>                     throw new CoupInvalideException(prise," (>" + nbAllumette + ")");
+>                 }
+>                 else if (prise > 3){
+>                     throw new CoupInvalideException(prise, " (>3)");
+>                 }
+>                 else if (prise < 0){
+>                     throw new CoupInvalideException(prise, " (<0)");
+>                 }
+>                 else {
+>                     jeu.retirer(prise);
+>                 }
+>                 
+>             }
+
+allumettes/Arbitre.java: line 17-25 [41]
+allumettes/ArbitreConfiant.java: line 17-25
+<             this.untour(jeu);
+<             System.out.println("test");
+<         }
+< 
+<         // indiquer que la partie est finie 
+<         System.out.println(joueurActuel + "perd !");
+<         this.changerJoueur();
+<         System.out.println(joueurActuel + " gagne !");
+<     }
+---
+>             this.untour(jeu);
+>             System.out.println("test");
+>         }
+> 
+>         // indiquer que la partie est finie 
+>         System.out.println(joueurActuel + "perd !");
+>         this.changerJoueur();
+>         System.out.println(joueurActuel + " gagne !");
+>     }
+
+allumettes/Arbitre.java: line 5-10 [25]
+allumettes/Joueur.java: line 5-10
+<     private Joueur j2; 
+<     private Joueur joueurActuel;
+< 
+<     public Arbitre(Joueur j1, Joueur j2){
+<         this.j1 = j1; 
+<         this.j2 = j2; 
+---
+>     private String nom; 
+>     private Strategie strategie;
+> 
+>     public Joueur(String nom, Strategie strategie){
+>         this.nom = nom; 
+>         this.strategie = strategie; 
+
+allumettes/StrategieRapide.java: line 1-6 [24]
+allumettes/StrategieExpert.java: line 1-6
+< package allumettes;
+< 
+< public class StrategieRapide implements Strategie{
+<     
+<     public int choixNbAllumette(Jeu jeu){
+<         int nbActuel = jeu.getNombreAllumettes();
+---
+> package allumettes;
+> 
+> public class StrategieExpert implements Strategie {
+>     
+>     public int choixNbAllumette(Jeu jeu){
+>         int nbActuel = jeu.getNombreAllumettes();
+

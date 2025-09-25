@@ -1,0 +1,46 @@
+Require Import Naturelle.
+Section Session1_2020_Logique_Exercice_2.
+
+Variable A B : Prop.
+
+Theorem Exercice_2_Naturelle : (A -> B) -> ((~A) \/ B).
+Proof.
+I_imp H.
+I_ou_d.
+E_ou(A)(A).
+I_ou_d.
+
+TE.
+Hyp H.
+I_imp H1.
+E_imp(A).
+Hyp H.
+E_antiT.
+E_non(~A).
+Hyp H1.
+Absurde H.
+E_imp(A).
+Hyp H.
+E_imp(B).
+I_imp H1.
+
+E_antiT.
+
+I_non H1.
+I_antiT(A).
+Hyp H1.
+E_ou(A)(~A).
+TE.
+I_imp H2.
+E_imp(A).
+Hyp H.
+
+Qed.
+
+Theorem Exercice_2_Coq : (A -> B) -> ((~A) \/ B).
+Proof.
+(* A COMPLETER *)
+Qed.
+
+End Session1_2020_Logique_Exercice_2.
+

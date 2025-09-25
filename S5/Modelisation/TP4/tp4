@@ -1,0 +1,21 @@
+Require Import Extraction.
+Section Inudction.
+Variable A : Set. 
+
+Inductive liste : Set :=
+    Nil    : liste 
+    | Cons : A -> liste -> liste. 
+
+Variable append_spec : liste -> liste -> liste. 
+Axiom append_Nil : forall (l : liste), append_spec Nil l = l.
+Axiom append_Cons : forall (t : A), forall (q l : liste),
+append_spec (Cons t q) l = Cons t (append_spec q l).
+
+Theorem append_Nil_right : forall (l : liste), (append_spec l Nil) = l.
+intro. 
+symmetry.
+
+
+
+Theorem append_associative : forall (l1 l2 l3 : liste),
+(append_spec l1 (append_spec l2 l3)) = (append_spec (append_spec l1 l2) l3).

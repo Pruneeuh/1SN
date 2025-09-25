@@ -1,0 +1,11 @@
+gnatmake -gnatwa compresser.adb
+gnatmake -gnatwa test_module_compresser.adb
+./test_module_compresser
+./compresser test.txt
+./compresser -s test2.txt
+xxd -b test.txt.hff
+
+gnatmake -gnatwa decompresser.adb
+./decompresser test.txt.hff
+gnatmake -gnatwa test_decodage.adb
+./test_decodage test.txt 

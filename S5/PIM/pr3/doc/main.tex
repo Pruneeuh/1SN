@@ -1,0 +1,259 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\parindent=0cm   %taille des alinés
+\usepackage{geometry}
+\geometry{hmargin=1.5cm, vmargin=2cm}
+\usepackage{stmaryrd}  
+\usepackage{graphicx}	
+\usepackage{float}
+\usepackage{xcolor}  
+\usepackage{esint}   
+\usepackage{fourier-orns}
+\usepackage{enumitem} 
+\usepackage{pifont}
+\everymath{\displaystyle}
+\usepackage{amsfonts,amsmath,amsthm,amssymb,stmaryrd}
+\usepackage{titlesec}
+\usepackage{pdfpages}
+
+
+
+\title{\Huge Rapport PIM}
+\author{Prune Mamalet\vspace{0.5cm}\\Garance Werner--Guyader }
+\date{December-Janvier 2024}
+
+\begin{document}
+
+\maketitle
+\vspace{0.5cm}
+\title{\LARGE \textbf{Plan du rapport :}} 
+
+\section{Objectif du projet}
+\section{Architecture de l'application en modules}
+\section{Présentation des choix réalisés}
+\section{Présentation des algorithmes et types de données}
+\section{Démarche de test}
+\section{Difficultés rencontrés et solutions}
+\section{Organisation de l'équipe}
+\section{Bilan technique de l'avancement}
+\section{Bilan personnel et individuel}
+\section{Annexe}
+
+\newpage
+\setcounter{section}{0}
+
+
+\section{Objectif du projet}
+L'objectif de notre premier programme est de compresser un fichier texte à l'aide du codage d'Huffman. Il doit pouvoir afficher l'arbre et la table de codage d'Huffman qui permettent d'obtenir les codes correspondants aux symboles de notre texte.\\ Dans un second temps, notre deuxième programme doit pouvoir décompresser ce fichier compressé et renvoyer le texte initial.
+
+\section{Architecture de l'application en modules}
+\subsection{Compresser}
+\begin{itemize}
+    \item module\_compresser : spécification et corps et des fonctions nécessaire à la compression.
+    \item test\_module\_compresser : module de tests des fonctions et procédures de module---compresser. 
+    \item lca : module qui gère la définition et modificiation des dictionnaires (LCA).
+    \item compresser : programme qui compresse le fichier texte à l'aide des modules précedents.
+\end{itemize}
+\subsection{Decompresser}
+\begin{itemize}
+    \item module\_decompresser : spécification et corps et des fonctions nécessaire à la compression.
+    \item decompresser : programme qui compresse le fichier texte à l'aide des modules précedents.
+    \item test\_decodage : module pour tester les fonctions de décodage, affichage et enregistrement du texte décodé à partir d'un arbre correctement reconstruit. 
+\end{itemize}
+
+
+
+\section{Présentation des choix réalisés}
+
+
+
+\section{Présentation des algorithmes et types de données}
+\subsection{\textbf{Types de données}}
+\underline{Compresser : }\\
+\begin{minipage}{0.48\textwidth}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=5cm]{type Arbre compresser.png}
+        \caption{type T\_Arbre}
+    \end{figure}
+    Le Type Arbre permet de créer l'arbre d'Huffman en enregistrant le symbole et la fréquence et le code associés.\\
+    Le type arbre est un pointeur vers un enregistremment (T\_Cellule1) contenant les données souhaitées et les fils gauche et droit, eux même de type T\_Arbre.
+\end{minipage}
+\hspace{0.04\textwidth} % Ajoute de l'espace entre les minipages
+\begin{minipage}{0.48\textwidth}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=6cm]{Type Liste Chainée.png}
+        \caption{type T\_ListeChainee}
+    \end{figure}
+    \vspace{1cm}
+     Le type ListeChainee permet d'enregistrer différents arbres provisoires et donc de former l'abre d'Huffman par regroupement.\\
+     C'est également un pointeur vers un enregistrement (T\_Cellule2).   
+\end{minipage}
+\vspace{1cm}
+
+\underline{Decompresser :} \\
+
+\begin{minipage}{0.48\textwidth}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=5cm]{type arbre pointeur.png}
+        \caption{type T\_Arbre}
+    \end{figure}
+\end{minipage}
+\hspace{0.04\textwidth} % Ajoute de l'espace entre les minipages
+\begin{minipage}{0.48\textwidth}
+     Nous avons repris le même type de données que pour le compresser avec notre type Arbre. Il s'agit d'un pointeur vers un enregistrement ici seulement du Symbole, du code, du fils fauche et du fils droit, et plus de la fréquence qui ne nous sert pas. 
+\end{minipage}
+
+
+
+
+\subsection{\textbf{Algorithmes}}
+cf Annexe p10 pour les raffinages.\\
+\includepdf[pages={16,17}]{PIM-Huffman-GH06.pdf}
+
+
+\section{Démarche de test}
+Pour chacune de nos fonctions de module\_compresser, on a créé des fonctions de test à l'aide la commande pragma assert. En plus, on a demandé d'afficher régulièrement l'arbre pour vérifier cette fonction (Afficher\_Arbre).\\Lorsque tous les tests sont validés, le programme doit afficher "test ok".\\
+Exemples : \\
+\begin{minipage}{0.5\textwidth}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=5cm]{testersuivant fin.png}
+    \caption{Tester suivant et fin de liste }
+\end{figure}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=5cm]{tester fils.png}
+    \caption{Tester fils}
+\end{figure}
+\end{minipage}
+
+\vspace{1cm}
+
+Pour le module décompresser nous n'avons pas eu le temps de créer le module de test associé aux nouvelles fonctions que nous avons créés. 
+
+\section{Difficultés rencontrée et solutions}
+Nous avons eu des difficultés pour trouver le bon type de données à utiliser pour pouvoir bien construire et représenter l'arbre d'Huffman. Nous avons finalement choisit un pointeur vers un enregistrement contenant toutes les données souhaitées (Symbole, Code, Fréquence, Fils gauche et Fils droit). \vspace{0.5cm}
+\\ On a également eu du mal à comprendre ce qu'il fallait renvoyer dans le fichier compresser (des octets ou des codes en binaires ou des symboles etc) et comment faire la distinction entre les différentes parties (symboles utilisées, parours infixe de l'arbre et texte codé) au moment de la décompression. 
+\vspace{0.5cm} \\
+Enfin la fonction Afficher\_Arbre qui affiche l'arbre d'Huffman a été difficile à conceptualiser et coder et nous a pris beaucoup de temps. 
+\vspace{0.5cm}
+
+ En commençant la décompression nous nous sommes rendues compte qu'il y avait un problème dans notre compression (pour la séparation entre le parcours et le texte codé) nous avons donc du reprendre compresser. Ensuite nous avons passé beaucoup de temps sur la reconstruction de l'arbre d'Huffman.
+\\
+Nous n'avions pas réussi à recréer l'arbre d'Huffman à partir du parcours infixe au moment de l'oral, jeudi 16/01. Nous avions donc créé un module de test qui permet, si on a recréé l'arbre au préalable, de décoder le texte. En reprenant donc l'arbre d'Huffman du module compresser, on a pu vérifier que nos fonctions de décodage, affichage et enregistrement dans un nouveau fichier du texte décodé fonctionnaient. \\Par la suite, on a finalement réussi à reprendre cette fonction de reconstruction de l'arbre (cf figure 7) et donc joindre les deux bouts de notre programme décompresser. Le fichier test\_décodage n'est plus utile en tant que tel mais on a jugé important de le laisser puisque c'est une étape importante de notre avancement.\\ Désormais compresser.adb et décompresser.adb compilent et s'exécutent comme souhaité et fournissent bien un fichier test.txt.hff.d identique au fichier test.txt initial.
+\vspace{0.5cm}
+
+Nous utilisons le symbole \$ pour le fin de fichier et non \textbackslash \$ puisqu'il ne s'agissait pas d'un caractère et nous n'avons pas trouvé d'autres solutions pour résoudre ce problème. Il ne faut donc pas que notre fichier contienne le caractère \$.\\
+
+\begin{minipage}{0.48\textwidth}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=6cm]{arbre huffman compresser.png}
+    \caption{arbre d'Huffman construit par compresser.adb}
+\end{figure}
+\end{minipage}
+\hspace{0.04\textwidth}
+\begin{minipage}{0.48\textwidth}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=6cm]{arbre decompresser - et texte décodé.png}
+    \caption{arbre d'Huffman reconstruit à partir du parcours infixe dans decompresser.adb}
+\end{figure}
+\end{minipage}
+\vspace{1cm}
+
+\\ 
+ 
+\section{Organisation de l'équipe}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=10cm]{noms.png}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{compresser.png}
+    \caption{Qui a fait quoi : compresser}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{decompresser.png}
+    \caption{Qui a fait quoi : décompresser}
+\end{figure}
+
+\section{Bilan technique de l'avancement}
+
+Depuis le dernier rendu du rapport nous avons réussi à régler les problèmes de notre fonction afficher. Et réglé ce qui ne fonctionnait finalement pas dans compresser (le parcours de l'abre d'Huffman notamment). \\
+Nous n'avons cependant pas eu le temps de faire sorte que le programme soit robuste (notament si le fichier que l'on cherche à compresser est vide ou n'existe pas). Nous ne pouvons pas compresser plusieurs fichier à la fois.\\
+Pistes d'améliorations : mettre les fonctions qui sont définies dans la spécification du module compresser dans module\_compresser.ads/.adb\\ Bilan du projet (résultats) : 
+
+\begin{minipage}{0.25\textwidth}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=6cm]{test.txt.png}
+    \caption{fichier texte test.txt utilisé pour tester les programmes }
+\end{figure}
+\end{minipage}
+\hspace{0.09\textwidth}
+\begin{minipage}{0.25\textwidth}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=6cm]{test.txt.hff.png}
+    \caption{fichier test.txt.hff créé par compresser.adb}
+\end{figure}
+\end{minipage}
+\hspace{0.09\textwidth}
+\begin{minipage}{0.25\textwidth}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=6cm]{test.txt.hff.d.png}
+    \caption{fichier décompressé test.txt.hff.d créé par décompresser }
+\end{figure}
+\end{minipage}
+\vspace{1cm}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=6cm]{bits parcours.png}
+    \caption{parcours infixe de l'arbre renvoyé par compresser en mode bavard (-b)}
+\end{figure}
+
+
+
+
+
+
+\section{Bilan personnel et individuel}
+Prune : J'ai du passer une après midi sur la conception des raffinages de \textit{compresser} plus 3h pour les reprendre. J'ai passé 28 heures sur l'implémentation du code de \textit{compresser} (dont 6 heures de projet en classe). 
+Pour décompresser j'ai passé 15h30 sur le code de \textit{décompresser} . Pour le rapport nous y avons pour l'insant passé 4 heures.\\
+Ce projet m'as permis de voir comment s'organiser en binome sur un projet, et aussi comment gérer un projet assez conséquent. Il m'a aussi permis de comprendre comment gérer la lecture et l'écriture de fichier en Ada. 
+\\
+\vspace{0.5cm} 
+
+Garance : Peu de temps passé sur la conception des raffinages de \textit{compresser} (je m'occupais de \textit{décompresser}). Par la suite, environ 12h passé sur l'implémentation du code (6h de projet en classe et 6h pour le moment sur la fonction Afficher et d'autres corrections de code).
+J'ai passé une après midi sur les raffinages de \textit{décompresser} et 24h sur le code. 
+Quant au rapport, on a mis 4h pour l'instant.  \\
+Ce projet m'a permis de mieux appréhender et comprendre en profondeur le langage. J'ai aussi pu apprendre à travailler sur du long terme en binome et gérer mon temps. 
+
+
+
+\hspace{0.04\textwidth} % Ajoute de l'espace entre les minipages
+
+
+
+
+\section{Annexes}
+\subsection{Raffinages}
+
+\includepdf[pages={1,2,3,4,5,6,7,8}]{PIM-Huffman-GH06.pdf}
+
+\includepdf[pages={9,10,11,12,14,15}]{PIM-Huffman-GH06.pdf}
+
+
+
+
+\end{document}

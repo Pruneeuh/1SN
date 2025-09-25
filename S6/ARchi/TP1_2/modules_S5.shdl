@@ -1,0 +1,64 @@
+// MODULES NECESSAIRES POUR MINICRAPS - FAITS EN S5
+
+// DECODEURS
+
+module decoder2to4(e[1..0] : s[3..0])
+	s[0] = /e[1]*/e[0]
+	s[1] = /e[1]*e[0]
+	s[2] = e[1]*/e[0]
+	s[3] = e[1]*e[0]
+end module
+
+module decoder3to8(e[2..0] : s[7..0])
+       decoder2to4(e[1..0] : low[3..0])
+       s[3..0] = low[3..0]*/e[2]
+       s[7..4] = low[3..0]*e[2]
+end module
+
+module decoder4to16(e[3..0] : s[15..0])
+       decoder3to8(e[2..0] : low[7..0])
+       s[7..0] = low[7..0]*/e[3]
+       s[15..8] = low[7..0]*e[3]
+end module
+
+// REGISTRE 32
+module reg32(rst, clk, en, d[31..0], s[31..0])
+    s[31..0] := d[31..0] on clk, reset when rst, enabled when en
+end module
+
+// ADDSUB32
+
+module addsub32(a[31..0], b[31..0], sub : s[31..0], V, C)
+	bb[31..0] = /sub*b[31..0] + sub*/b[31..0]
+	adder32(a[31..0], bb[31..0],sub : s[31..0],co)
+	V = /sub*a[31]*b[31]*/s[31] 
+		+ /sub*/a[31]*/b[31]*s[31] 
+		+ sub*a[31]*/b[31]*/s[31] 
+		+ sub*/a[31]*b[31]*s[31]
+	C = /sub*co + sub*/co
+end module
+
+module adder32(a[31..0], b[31..0], cin : s[31..0], cout)
+   adder4(a[3..0], b[3..0], cin : s[3..0], c4)
+   adder4(a[7..4], b[7..4], c4 : s[7..4], c8)
+   adder4(a[11..8], b[11..8], c8 : s[11..8], c12)
+   adder4(a[15..12], b[15..12], c12 : s[15..12], c16)
+   adder4(a[19..16], b[19..16], c16 : s[19..16], c20)
+   adder4(a[23..20], b[23..20], c20 : s[23..20], c24)
+   adder4(a[27..24], b[27..24], c24 : s[27..24], c28)
+   adder4(a[31..28], b[31..28], c28 : s[31..28], cout)
+end module
+
+module adder4(a[3..0], b[3..0], cin : s[3..0], cout)
+	fulladder(a[0], b[0], cin : s[0], c1)
+   fulladder(a[1], b[1], c1 : s[1], c2)
+   fulladder(a[2], b[2], c2 : s[2], c3)
+   fulladder(a[3], b[3], c3 : s[3], cout)
+   v[3..0]="1111"
+end module
+
+module fulladder(a, b, cin : s, cout)
+	axorb=/a*b + a*/b
+   s=/axorb*cin + axorb*/cin
+   cout=axorb*cin + /axorb*a
+end module

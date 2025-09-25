@@ -1,0 +1,80 @@
+faudra rajouter les fonctions tests associées 
+!!!!!!! 
+
+---> faut faire en sorte que "\$" soit dans l'abre d'Huffman avec une fréquence 0 
+on liste les symboles utilisés (leur valeur en octet ? dans le codage ASCII ) dans l'odre où ils apparaissent suivant parcours infixe (l'ordre dans le dico je pense' - on descend oau max à gauche puis remonte sur le premier à droite ..)
+double le dernier symbole + met symbole de fin de fichir au debut avec sa position
+ajoute liste des des bits correspondant juste sur les branches 
+
+pour les exeptions liées à la ligne de commande utilisé le fichier exemple ligne de commande 
+
+
+Ord : le code du caract`ere (dans l’encodage utilis´e)
+Chr : le caract`ere correspondant `a un code    Chr(Ord(C)) = C
+
+La fonction Length appartient au package Ada.Strings.Unbounded et retourne le nombre de caractères de la chaîne non bornée.
+
+
+Longueur := Ma_Chaine'Length; --> string
+ Longueur := Length(Ma_Chaine); --> unbouded
+
+
+
+ A FAIRE : 
+
+ 	for T_Octet'Size use 8;
+
+
+
+
+-- Procédures pour l'écriture du fichier compresser : 
+
+   procedure Ecriture_Symboles_Utilises(Dict_Codage : in T_LCA ; Liste_Symboles : out Unbounded_String) is 
+      Position : Integer; 
+      Codage_Caract : Unbounded_String; 
+            
+      procedure Recherche_Fin (Cle : in Character ; Valeur : in T_Octet_Str ) is 
+      begin 
+         if Cle /= '$' then 
+            Position := Position + 1 ; 
+         else 
+            Octet_a_ajouter := T_Octet(Position);
+         end if; 
+      end Recherche_Fin; 
+
+      procedure Position_Fin is new Pour_Chaque(Traiter => Recherche_Fin  ); 
+
+
+      procedure Ajouter_Codage_Caractere(Cle : in Character ; Valeur : in T_Octet_Str) is  
+      begin 
+         if Cle /= '$' then
+            Codage_Caract := Codage_8_bits(Character'Pos(Cle));
+            Liste_Symboles := Liste_Symboles & Codage_Caract; 
+         else 
+            null;
+         end if;  
+      end Ajouter_Codage_Caractere;
+
+      procedure Ajouter_Codage_Caracteres is new Pour_Chaque(Ajouter_Codage_Caractere); 
+
+
+   begin 
+      Position := 0; 
+      Position_Fin(Dict_Codage); 
+      Ajouter_Codage_Caracteres(Dict_Codage);
+      Liste_Symboles := Liste_Symboles & Codage_Caract; -- pour dobuler le dernier symbole
+   end Ecriture_Symboles_Utilises; 
+
+
+   function Codage_8_bits(Nb : in Integer) return Unbounded_String is 
+         Stock : Integer; 
+         Bit : Integer; 
+         Octet : Unbounded_String; 
+   begin 
+         Stock := Nb;
+         for indice in 1..8 loop 
+            Bit := Stock mod 2; 
+            Octet := Octet & To_Unbounded_String(Bit); 
+         end loop; 
+         return Octet;
+   end Codage_8_bits;

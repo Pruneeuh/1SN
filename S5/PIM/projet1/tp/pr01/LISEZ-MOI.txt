@@ -1,0 +1,93 @@
+--------------------------------------------------------------------------------
+Nom       : MAMALET 
+Prénom    : Prune
+Groupe TP : G
+--------------------------------------------------------------------------------
+
+Consigne : Dans ce fichier, les « ... » indiquent les endroits à compléter.
+Il s'agit de remplacer les « ... » par votre texte.  Merci de laisser une
+ligne blanche avant.  Le texte déjà écrit doit être conservé !
+
+
+=====[ Temps passé ]============================================================
+
+Ces informations de temps sont demandées à titre indicatif et ne sont en
+aucun cas prises en compte dans la notation du projet.
+Il faut remplacer les ... par des nombres.
+
+* Temps passé sur la V1 :  4 heures 0 minutes
+* Temps passé sur la V2 : 5 heures 0 minutes
+
+Pour la V2 on ne tiendra pas compte du temps passé sur la V1.
+
+
+=====[ Tests ]==================================================================
+
+-- Expliquer en quelques phrases comment vous avez testé votre programme (et
+-- quels tests ont été réalisés).
+
+En réalisant une partie avec chaque mode de jeu, et en vérifiant que le programme respecter bien ce mode. 
+En testant aussi avec un nombre d'allumettes choisi trop grand ou trop faible pour vérifier les réponses de l'arbitre.
+
+
+=====[ Difficultés ]============================================================
+
+-- Indiquer les difficultés rencontrées et les solutions apportées.
+
+Faire en sorte de ne pas avoir de redondance dans le programme, j'ai donc du revoir mes raffinages 
+Afficher correctement les messages de l'abitre, j'ai du retravailler les différents cas
+Réaliser le mode expert avec des constantes nommées. 
+
+
+=====[ Remarques diverses ]=====================================================
+
+Remarque : Cette rubrique peut être vide.
+
+...
+
+
+=====[ Questions ]==============================================================
+
+-- Dans cette partie, on ne demande pas de modifier le programme écrit.  On
+-- doit expliquer de manière précise et concise ce qu'il faudrait faire pour
+-- prendre en compte les évolutions demandées.
+
+Q1 : Quand on demande le niveau de jeu de l'ordinateur, on veut pouvoir
+répondre « distrait », « naïf », « rapide », etc.  On remarque que le premier
+caractère correspond bien à la lettre à taper pour le niveau considéré.
+Est-ce possible dans votre programme ?  Dans la négative, comment le modifier
+pour que ce soit possible ?
+
+Cela ne fonctionne pour mon programme, il faudrait utiliser un skipline pour qu'il ne prenne pas en compte les caractères suivants. 
+
+
+Q2 : Quelles modifications faut-il apporter au programme pour avoir des
+allumettes représentées par 4 barres verticales (et non 3).
+Il faut changer la valeur de la constant Nombre_Barre de 3 à 4 dans la déclaration des variables.
+
+
+Q3 : Quelles modifications faut-il apporter au programme pour afficher les
+allumettes groupées par 4 (et non par 5).
+
+Il faut changer la valeur de la constant Paquet_Allumettes de 5 à 4 dans la déclaration des variables.
+
+Q4 : Quand l'utilisateur choisit le niveau de jeu, on veut qu'il puisse aussi
+donner un chiffre (0 pour distrait, 1 pour naïf, 2 pour rapide et 3 pour
+expert).  Quelles modifications faut-il apporter au programme ?
+
+Il faut rajouter dans les différents cas de case les valeurs 0 (en plus de 'd' et 'D'), 1 (en plus de de 'n' et 'N'), ...
+
+
+Q5 : On veut ajouter un nouveau mode de jeu pour la machine. Par exemple, un
+mode « lent » où l'ordinateur prend toujours une seule allumette.  Quelles
+modifications faut-il apporter au programme ?
+
+il faudrait rajouter un nouveau cas dans le case ligne 66 où Choix_Allumette serait toujours égal à 1. 
+
+Q6 : On veut que l'utilisateur puisse abandonner la partie en donnant un
+nombre d'allumettes strictement négatif.  Quelles modifications faut-il faire
+sur le programme ?
+
+Il faudrait rajouter dans le exit when de la boucle principale  Nombre_Allumettes = 0 ou Choix_Allumette < 0
+
+-------------------------------------------------------------------------------

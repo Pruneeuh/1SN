@@ -1,0 +1,40 @@
+Voici les étapes à réaliser :  ECRIRE TOUT CE QU'ON DEMANDE AVANT DE TESTER
+
+    Définir le type utilisateur complexe_t qui représente un nombre complexe. Utiliser un alias pour que le type qui apparaisse dans le code soit bien complexe_t.
+    Spécifier (= donner contrat et signature) et implanter les fonctions :
+
+    reelle, qui à un nombre complexe associe sa partie réelle
+    imaginaire, qui à un nombre complexe associe sa partie imaginaire
+
+    Spécifier et implanter les procédures :
+
+    set_reelle, qui modifie la partie réelle du nombre complexe donné avec le nombre réel donné (dans cet ordre)
+    set_imaginaire, qui modifie la partie imaginaire du nombre complexe donné avec le nombre réel donné (dans cet ordre)
+    init, qui modifie la partie réelle et la partie imaginaire du nombre complexe donné avec les deux réels donnés (partie réelle puis imaginaire, dans cet ordre)
+
+    Implanter la procédure copie spécifiée dans complexe.h, qui modifie le nombre complexe donné de façon à ce que ses composantes soient les même que l'autre nombre passé en paramètre.
+    Implanter les procédures dont les contrats sont données dans complexe.h :
+
+    conjugue : calcule le conjugué d'un nombre complexe
+    ajouter : réalise l'addition de deux nombres complexes
+    soustraire : réalise la soustraction de deux nombres complexes
+    multiplier : réalise la multiplication de deux nombre complexes
+    echelle : multiplie un nombre complexe par un nombre réel
+
+    Implanter la procédure puissance spécifiée dans le .h. Attention au contrat.
+    Spécifier et implanter les fonctions :
+
+    module_carre, qui calcule le carré du module du complexe donné en paramètre
+    module, qui calcule le module du complexe donné en paramètre (on pourra s'aider de la librairie math)
+    argument, qui calcule l'argument du complexe donné en paramètre (on pourra s'aider de la librairie math) ; attention au contrat de cette fonction
+
+Nous vous fournissons un script qui teste (grossièrement) la conformance de votre .h à la spécification demandée (test_struct), ainsi qu'une batterie de tests unitaires pour tester le module complexe (test_complexe.c). Il ne vous est pas autorisé de les modifier.
+
+Lorsque votre module complexe est terminé, vous pouvez le tester en réalisant les étapes suivantes (dans un terminal à l'endroit où se trouve le code) :
+
+> make test
+> make runtest
+
+(bien sûr, on ne peut faire make runtest que si make test n'a pas renvoyé d'erreur)
+
+L'exécution de make runtest lance les tests et vous donne le résultat (il sauvegarde aussi ces résultats dans un CSV, pour une version synthétique). Si vous avez 0 échecs, vous pouvez passer à l'étape suivante !

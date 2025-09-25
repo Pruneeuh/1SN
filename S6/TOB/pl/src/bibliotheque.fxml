@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="bibliotheque.BibliothequeApp">
+    <top>
+        <Label text="Gestion de Bibliothèque" style="-fx-font-size: 20px; -fx-font-weight: bold;" BorderPane.alignment="CENTER"/>
+    </top>
+
+    <center>
+        <TableView fx:id="table" prefHeight="300" prefWidth="600">
+            <columns>
+                <TableColumn fx:id="titreCol" text="Titre" prefWidth="200"/>
+                <TableColumn fx:id="auteurCol" text="Auteur" prefWidth="200"/>
+                <TableColumn fx:id="isbnCol" text="ISBN" prefWidth="200"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <bottom>
+        <VBox spacing="10" padding="10">
+            <HBox spacing="10">
+                <Label text="Titre:"/>
+                <TextField fx:id="titreField" promptText="Titre du livre"/>
+                <Label text="Auteur:"/>
+                <TextField fx:id="auteurField" promptText="Auteur du livre"/>
+                <Label text="ISBN:"/>
+                <TextField fx:id="isbnField" promptText="ISBN"/>
+            </HBox>
+            <HBox spacing="10">
+                <Button fx:id="ajouterBtn" text="Ajouter"/>
+                <Button fx:id="supprimerBtn" text="Supprimer"/>
+                <Button fx:id="rechercherBtn" text="Rechercher"/>
+                <Label fx:id="messageLabel" text="" style="-fx-text-fill: green;"/>
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>

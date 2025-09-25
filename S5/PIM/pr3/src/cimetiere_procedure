@@ -1,0 +1,401 @@
+procedure Afficher_Arbre(Arbre : in T_Arbre) is
+      procedure Afficher (SS_Arbre : in T_Arbre; c:in Integer; Nb_Espaces : in Integer) is
+         Curseur : T_Arbre;
+         FG : T_Arbre;
+         FD: T_Arbre;
+         
+      begin
+         Curseur := SS_Arbre;
+         if Curseur /= Null then
+            FG := Curseur.all.Fils_Gauche;
+            FD := Curseur.all.Fils_Droit;
+
+            if Nb_Espaces > 0 then
+               for i in 1..Nb_Espaces loop
+                  Put("|       ");
+               end loop;
+            end if;
+            Put("\--");
+            Put(c,1);
+            Put("--(");
+            Put(Curseur.all.Frequence,1);
+            Put(")");
+            Put(Curseur.all.Symbole);
+            New_Line;
+
+            if FG/=Null then
+               if FG.all.Fils_Gauche=Null then
+
+                  for i in 1..Nb_Espaces+1 loop
+                     put("|       ");
+                  end loop;
+                  Put("\--0--(");
+                  Put(FG.all.Frequence,1);
+                  Put(")");
+                  Put(FG.all.Symbole);
+                  New_Line;
+         
+               else 
+                  Afficher(FG,0,Nb_Espaces+1);
+               end if; 
+               Afficher(FD,1,Nb_Espaces+1);
+            end if;
+              
+         end if;
+      end Afficher;
+   begin
+      Put("(");
+      Put(Arbre.all.Frequence,1);
+      Put(")");
+      New_Line;
+      Afficher(Arbre.all.Fils_Gauche,0,0);
+      Afficher(Arbre.all.Fils_Droit,1,0);
+
+   end Afficher_Arbre;
+
+
+
+procedure Reconstuire_Rec(Codage : in Unbounded_String; Arbre : T_Arbre) is 
+      procedure Reconstruire(SS_Arbre : T_Arbre ; Codage : in Unbounded_String,Indice : in Integer) is 
+         Curseur : T_Arbre; 
+         FG : T_Arbre; 
+         FD : T_Arbre; 
+         Bit_Actuel : Character := To_String(Codage)(Indice);
+         Bit_Suivant : Character := To_String(Codage)(Indice +1);
+      begin 
+         Curseur := SS_Arbre; 
+         FG := Le_Fils_Gauche(Curseur);
+         FD := Le_Fils_Droit(Curseur);
+       
+         if Bit_Actuel ='0' then
+            if Bit_Suivant ='1' then 
+               Creer_FG(FG,'?',0,Arbre_null,Arbre_null);
+            else
+               Reconstruire(FG, Codage,Indice+1);
+            end if; 
+            Reconstruire(FD,Codage,Indice+1);
+         end if; 
+         
+      end Reconstuire; 
+   begin 
+      Reconstruire(Arbre,0,Codage,1);
+   end Reconstruire_Rec;  
+
+
+  procedure Les_Symboles (L_Octets : in Unbounded_String; Symboles_Utilises : out Unbounded_String) is
+      indice : Integer ;  --On saute le premier élément qui correspond à la position de "/$"
+   begin
+      indice := 2;
+      Symboles_Utilises := To_Unbounded_String("");
+      while To_String(L_Octets)(indice)/= To_String(L_Octets)(indice-1) loop
+         Symboles_Utilises := Symboles_Utilises & To_Unbounded_String(To_String(L_Octets)(indice));
+         indice := indice +1;
+      end loop;
+   end Les_Symboles;  -- elle va pas compiler 
+
+
+
+   procedure Decodage(Texte_code : in Unbounded_String; Liste_Symbole : out Unbounded_String; Arbre_Huffman :in out T_Arbre) is
+      Liste_Bits_Symbole : Unbounded_String;
+      i : integer := 1;
+      Symbole : Character;
+      Dict_Codage : T_LCA;
+   begin
+      Creer_Dict (Arbre_Huffman, Dict_Codage);
+      Liste_Symbole := To_Unbounded_String(""); 
+      while Liste_Bits_Symbole /= La_Valeur(Dict_Codage,'$') loop --faut regler le pb de /$
+         while To_String(Texte_code)(i) /= '.' loop
+            Liste_Bits_Symbole := Liste_Bits_Symbole & To_Unbounded_String(To_String(Texte_code)(i));
+            i := i +1;
+         end loop;
+         i := i+1;
+         Symbole_correspondant(Liste_Bits_Symbole,Arbre_Huffman,Symbole);
+         Liste_Symbole := Liste_Symbole & To_Unbounded_String(Symbole);
+      end loop; 
+   end Decodage;
+
+
+   procedure Recuperer_Parcours(Arbre : in T_Arbre;Bits_Parcours_Infixe : in out Unbounded_String) is
+      procedure Parcours (SS_Arbre : in T_Arbre; c:in Integer;Bits_Parcours_Infixe : in out Unbounded_String) is
+         Curseur : T_Arbre;
+         FG : T_Arbre;
+         FD: T_Arbre;
+         Bits_FG : Unbounded_String; 
+         Bits_FD : Unbounded_String; 
+      begin
+         Curseur := SS_Arbre;
+
+         if Curseur /= Null then
+            FG := Curseur.all.Fils_Gauche;
+            FD := Curseur.all.Fils_Droit;
+            Put(To_String(Bits_Parcours_Infixe));
+            New_Line; 
+            --Bits_Parcours_Infixe := Bits_Parcours_Infixe & To_Unbounded_String(c); 
+
+            if FG/=Null then
+               if FG.all.Fils_Gauche=Null then
+                  null; 
+                  --Bits_Parcours_Infixe := Bits_Parcours_Infixe & To_Unbounded_String("0"); 
+                  --Put_Line("premier if"); 
+               else 
+                  Bits_FG := Bits_Parcours_Infixe & To_Unbounded_String("0"); 
+                  Parcours(FG,0,Bits_FG);
+                  Put(To_String(Bits_FG)); 
+                  New_Line; 
+                  --Put_Line("premier else");
+               end if; 
+               Bits_FD := Bits_Parcours_Infixe & To_Unbounded_String("1");
+               Parcours(FD,1,Bits_FD);
+               Put(To_String(Bits_FD));
+               Put_Line("if du /null");
+               Bits_Parcours_Infixe := Bits_FG & Bits_FD;
+            end if;
+         end if;
+      end Parcours;
+   begin
+      
+      Parcours(Arbre.all.Fils_Gauche,0,Bits_Parcours_Infixe);
+      Parcours(Arbre.all.Fils_Droit,1,Bits_Parcours_Infixe);
+
+   end Recuperer_Parcours;
+
+
+procedure Reconstruire_Rec(Codage : in Unbounded_String; ArbreHuffman : out T_Arbre) is    
+      Indice : Integer := 1;
+      Code : Unbounded_String;
+      Fin : Boolean; 
+
+      procedure Reconstruire(Arbre : in out T_Arbre; Codage: in Unbounded_String; Indice : in Integer; Code : in out Unbounded_String; Fin : in out Boolean)is
+         Bit_Actuel : Character := To_String(Codage)(Indice);
+         Bit_Suivant : Character := To_String(Codage)(Indice+1);
+         Arbre_null : T_Arbre;
+      begin 
+         Initialiser_Arbre(Arbre_null);
+
+      
+         if Bit_Actuel='0' then
+            Enregistrer_Arbre(Arbre,'?',Code&To_Unbounded_String("0"),Arbre_null,Arbre_null);
+            Reconstruire(Arbre.all.Fils_Gauche,Codage, Indice, Code,Fin);
+            Reconstruire(Arbre.all.Fils_Droit ,Codage,Indice,Code,Fin);
+            
+         else --bit actuel à 1
+            if Arbre.all.Fils_Droit = null then
+               Enregistrer_Arbre(Arbre,'?',Code&To_Unbounded_String("1"),Arbre_null,Arbre_null);
+            else 
+               Fin := True; 
+            end if; 
+         end if; 
+            
+      end Reconstruire;
+   begin 
+      Code := To_Unbounded_String("");
+      Fin := False; 
+      while not Fin loop
+         Reconstruire(ArbreHuffman,Codage,Indice,Code,Fin);
+      end loop; 
+   end Reconstruire_Rec;
+
+
+   -- reconstruire par rec V1 : 
+   Fin := False; 
+      while not Fin loop
+         if Bit_Actuel = '0' then 
+            -- Enregister fils gauche 
+            Enregistrer_Arbre (Arbre.all.Fils_Gauche, '?', Bit_Actuel, Arbre_null, Arbre_null);
+
+            -- Avancer Arbre 
+            Arbre := Arbre.all.Fils_Gauche; 
+         else 
+            if Arbre = Racine and Arbre.all.Fils_Droit /= null then 
+               Fin := True; 
+            else 
+               -- Récupérer nouveau sans fils droit 
+
+               -- Enregister le fils droit 
+
+               -- Avancer Arbre 
+
+
+            end if; 
+         end if; 
+         -- Avancer indice 
+      end loop; 
+
+
+
+
+      AU CAS OU 
+
+
+
+
+
+   procedure Reconstuire(Racine : T_Arbre; Arbre : T_Arbre ; Sans_FD : T_Arbre ; Bits_Parcours : Unbounded_String ; Indice : Integer) is 
+      Bit_Actuel : Character := To_String(Bits_Parcours)(Indice);
+      Fin : Boolean; 
+      Arbre_null : T_Arbre; 
+      Nouveau_SFD : T_Arbre; 
+   begin 
+      Initialiser_Arbre(Arbre_null);
+      if not Fin then 
+         if Bit_Actuel = '0' then 
+            Enregistrer_Arbre (Arbre.all.Fils_Gauche, '?', Bit_Actuel, Arbre_null, Arbre_null);
+            Reconstuire (Racine, Arbre.all.Fils_Gauche, Sans_FD, Bits_Parcours, Indice+1);
+         else -- bit_actuel = '1'
+            if Racine = Arbre and Arbre.all.Fils_Droit then 
+               Fin := True;
+            else 
+               Enregistrer_Arbre (Sans_FD,'?',Bit_Actuel, Arbre_null, Arbre_null); 
+               -- trouver nouveau sans fils droit 
+               Reconstuire (Racine, Sans_FD.all.Fils_Droit,Nouveau_SFD, Bits_Parcours, Indice + 1); 
+            end if;
+         end if; 
+      end if;
+   end Reconstuire;
+
+   procedure Trouver_sans_fils_droit(Arbre : in T_Arbre ; Sans_FD : out T_Arbre ; Trouve : in out Boolean) is
+      Curseur : T_Arbre;
+   begin    
+      if Curseur.all.Fils_Droit = null and Curseur.all.Fils_Gauche /= null then
+         Sans_FD := Curseur.all.Fils_Droit; 
+         Trouve := True;
+      else 
+         Trouver_sans_fils_droit (Arbre.all.Fils_Gauche, Sans_FD);
+         if not Trouve then 
+            Trouver_sans_fils_droit (Arbre.all.Fils_Droit, Sans_FD, Trouve); 
+         end if; 
+      end if; 
+   end Trouver_sans_fils_droit; 
+
+
+   procedure Reconstruire_Rec(Codage : in Unbounded_String; ArbreHuffman : out T_Arbre) is    
+      Indice : Integer := 1;
+      Code : Unbounded_String;
+      Fin : Boolean; 
+
+      procedure Reconstruire(Arbre : in out T_Arbre; Codage: in Unbounded_String; Indice : in Integer; Code : in out Unbounded_String; Fin : in out Boolean)is
+         Bit_Actuel : Character := To_String(Codage)(Indice);
+         Bit_Suivant : Character := To_String(Codage)(Indice+1);
+         Arbre_null : T_Arbre;
+      begin 
+         Initialiser_Arbre(Arbre_null);
+
+      
+         if Bit_Actuel='0' then
+            Enregistrer_Arbre(Arbre,'?',Code&To_Unbounded_String("0"),Arbre_null,Arbre_null);
+            Reconstruire(Arbre.all.Fils_Gauche,Codage, Indice, Code,Fin);
+            Reconstruire(Arbre.all.Fils_Droit ,Codage,Indice,Code,Fin);
+            
+         else --bit actuel à 1
+            if Arbre.all.Fils_Droit = null then
+               Enregistrer_Arbre(Arbre,'?',Code&To_Unbounded_String("1"),Arbre_null,Arbre_null);
+            else 
+               Fin := True; 
+            end if; 
+         end if; 
+            
+      end Reconstruire;
+   begin 
+      Code := To_Unbounded_String("");
+      Fin := False; 
+      while not Fin loop
+         Reconstruire(ArbreHuffman,Codage,Indice,Code,Fin);
+      end loop; 
+   end Reconstruire_Rec;
+
+
+
+
+
+   procedure Code_binaire (Symbole : in Character; Liste_Arbres : in T_ListeChainee) is ---------------- elle sert à rien je pense
+      curseur : T_ListeChainee;
+      code : T_Octet_Str;
+   begin 
+      curseur := Liste_Arbres;
+      while not Fin_Liste(curseur) and Le_Symbole(curseur.all.Arbre) /= Symbole loop
+         if Le_Symbole(curseur.all.Arbre) = Symbole then
+            code := Le_Code(curseur.all.Arbre);
+         else 
+            curseur := Suivant(curseur); 
+         end if; 
+      end loop;
+   end Code_binaire;
+
+
+
+      procedure reconstruire_Arbre(Arbre_Huffman : out T_Arbre; Bits_Parcours : in out Unbounded_String) is
+      procedure reconstruire (ss_Arbre : in T_Arbre; Bits_Parcours_Update: in out Unbounded_String; Indice : in Integer) is
+         
+         procedure Trouver_sans_fils_droit(Arbre : in T_Arbre ; Sans_FD : out T_Arbre ; Trouve : in out Boolean) is
+         Curseur : T_Arbre;
+         begin 
+            Initialiser_Arbre(Sans_FD);
+            Curseur := Arbre;
+            if Curseur /= null then   
+               if Curseur.all.Fils_Droit = null and Curseur.all.Fils_Gauche /= null then
+                  Trouver_sans_fils_droit (Curseur.all.Fils_Gauche, Sans_FD,Trouve);
+                  if not Trouve then
+                     Sans_FD := Curseur;
+                     Trouve := True;
+                  end if;
+               elsif Curseur.all.Fils_Droit /= null and Curseur.all.Fils_Gauche /= null then
+                  Trouve :=False; 
+                  Trouver_sans_fils_droit (Curseur.all.Fils_Droit, Sans_FD, Trouve);
+               end if; 
+            end if;
+         end Trouver_sans_fils_droit;  
+         
+         Bit_Actuel : Character;
+         Bit_Suivant : Character;
+         FG : T_Arbre;
+         FD : T_Arbre; 
+         Code : Unbounded_String := To_Unbounded_String("");
+         Curseur : T_Arbre;
+         Trouve : Boolean;
+         Arbre_null : T_Arbre;
+         Sans_FD : T_Arbre;
+      begin
+         Initialiser_Arbre(Arbre_null);
+         Curseur := ss_Arbre;
+         Bit_Actuel := To_String(Bits_Parcours_Update)(1);
+         Bit_Suivant := To_String(Bits_Parcours_Update)(2);
+         --Bits_Parcours_Update := To_Unbounded_String(To_String(Bits_Parcours_Update)(Indice+1..length(Bits_Parcours_Update)));
+         --if curseur /= null then
+         --FG := Curseur.all.Fils_Gauche;
+         --FD := Curseur.all.Fils_Droit;
+        -- end if; 
+         Code := Code & Bit_Actuel;
+         --Trouver_sans_fils_droit (Curseur, Sans_FD, Trouve);
+
+         if Trouve then
+            if Bit_Actuel = '0' and Bit_Suivant = '0' then
+               Curseur := Curseur.all.Fils_Gauche;
+               reconstruire (FG, Bits_Parcours_Update, Indice + 1);
+               
+            elsif Bit_Actuel = '0' and Bit_Suivant = '1' then 
+               Initialiser_Arbre(FG); 
+               Enregistrer_Arbre(FG, '?',Code,Arbre_null,Arbre_null);
+               Curseur.all.Fils_Gauche := FG; 
+               reconstruire (FD, Bits_Parcours_Update, Indice+1);
+
+            elsif Bit_Actuel = '1' and Bit_Suivant = '1' then 
+               Enregistrer_Arbre(Curseur.all.Fils_Droit, '?',Code,Arbre_null,Arbre_null);
+            end if; 
+            Trouve :=False; 
+            Trouver_sans_fils_droit (ss_Arbre,Sans_FD,Trouve);
+            reconstruire(Sans_FD, Bits_Parcours,Indice+1);
+         end if; 
+      end reconstruire ;
+
+      Arbre_null : T_Arbre; 
+   begin 
+         Initialiser_Arbre(Arbre_Huffman);
+         Initialiser_Arbre(Arbre_null);
+         Enregistrer_Arbre (Arbre_Huffman,'?', To_Unbounded_String("0"), Arbre_null, Arbre_null);
+         reconstruire(Arbre_Huffman, Bits_Parcours,1);
+   end reconstruire_Arbre;
+
+
+   
+
+ 

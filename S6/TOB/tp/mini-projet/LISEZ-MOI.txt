@@ -1,0 +1,37 @@
+Nom       : MAMALET 
+Prénom    : Prune
+Groupe TP : H
+
+
+Consigne :  Ci-dessous, répondre à la place des « ... ».
+
+
+=====[ Temps ]==================================================================
+
+Temps passé sur la V1 : 6 heures 50 minutes
+Temps passé sur la V2 : 0 heures 30 minutes
+Pour la V2 on ne tiendra pas compte du temps passé sur la V1.
+Bien sûr, les temps renseignés ici ne sont pas pris en compte dans la notation.
+
+
+=====[ Questions ]==============================================================
+
+Indiquer la relation UML entre Cercle et le Point centre du cercle.
+-------------------------------------------------------------------
+
+Il y a une relation de dépendance entre la classe Cercle et la classe Point puisque Cercle fait référence à Point.
+C'est une relation structurelle entre Cercle et Point puisque l'attribut centre du cercle est de la classe Point. 
+
+
+Comment est réalisée l'exigence E18 ?
+-------------------------------------
+Lorsque l'on créer un cercle on ne le construit pas directement avec le point qui nous ai donné mais on fait une copie de celui-ci pour l'enregistrer comme le centre du cercle.
+
+
+
+=====[ Explications ]===========================================================
+
+(Facultatif) Donner ici les explications supplémentaires utiles à la
+compréhension du travail rendu.
+
+...

@@ -1,0 +1,39 @@
+1,16c1,21
+< XavierAllumettes restantes : 13
+< diff ordi
+< Xavier , combien d'allumettes ?Xavier prend 1 allumettes.
+< Xavierprend13allumettes.test
+< XavierAllumettes restantes : 12
+< diff ordi
+< Xavier , combien d'allumettes ?Exception in thread "main" java.util.NoSuchElementException
+< 	at java.base/java.util.Scanner.throwFor(Scanner.java:937)
+< 	at java.base/java.util.Scanner.next(Scanner.java:1594)
+< 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+< 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+< 	at allumettes.StrategieHumain.choixNbAllumette(StrategieHumain.java:9)
+< 	at allumettes.Joueur.getPrise(Joueur.java:18)
+< 	at allumettes.ArbitreConfiant.untour(ArbitreConfiant.java:39)
+< 	at allumettes.ArbitreConfiant.arbitrer(ArbitreConfiant.java:17)
+< 	at allumettes.Jouer.main(Jouer.java:52)
+---
+> Allumettes restantes : 13
+> Xavier, combien d'allumettes ? Xavier prend 1 allumette.
+> 
+> Allumettes restantes : 12
+> Ordinateur prend 3 allumettes.
+> 
+> Allumettes restantes : 9
+> Xavier, combien d'allumettes ? Xavier prend 3 allumettes.
+> 
+> Allumettes restantes : 6
+> Ordinateur prend 1 allumette.
+> 
+> Allumettes restantes : 5
+> Xavier, combien d'allumettes ? [Une allumette en moins, plus que 4. Chut !]
+> Xavier, combien d'allumettes ? Xavier prend 3 allumettes.
+> 
+> Allumettes restantes : 1
+> Ordinateur prend 1 allumette.
+> 
+> Ordinateur perd !
+> Xavier gagne !
