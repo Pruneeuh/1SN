@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        ".als.json": "jsonc",
-        "bitset": "c",
-        "set": "c"
-    }
-}
